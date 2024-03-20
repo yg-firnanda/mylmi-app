@@ -15,6 +15,11 @@ return new class extends Migration
             $table->id();
             $table->text('image');
             $table->text('link')->nullable();
+            $table->foreignId('user_id');
+            $table->foreign('user_id')
+                ->references('id')
+                ->on('users')
+                ->onUpdate('cascade')->onDelete('restrict');
             $table->timestamps();
         });
     }

@@ -20,6 +20,11 @@ return new class extends Migration
             $table->date('release');
             $table->integer('views');
             $table->text('link');
+            $table->foreignId('user_id');
+            $table->foreign('user_id')
+                ->references('id')
+                ->on('users')
+                ->onUpdate('cascade')->onDelete('restrict');
             $table->timestamps();
         });
     }

@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Fundraising extends Model
 {
@@ -23,9 +24,6 @@ class Fundraising extends Model
         'user_id',
         'category_id',
         'province_id',
-        'regency_id',
-        'district_id',
-        'village_id',
     ];
 
     /**
@@ -43,7 +41,7 @@ class Fundraising extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function fundraisingCategory(): BelongsTo
+    public function Category(): BelongsTo
     {
         return $this->belongsTo(FundraisingCategory::class, 'category_id', 'id');
     }

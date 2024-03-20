@@ -23,11 +23,19 @@ return new class extends Migration
             $table->enum('status', ['open', 'closed'])->default('open');
             $table->dateTime('deadline');
             $table->foreignId('user_id');
+            $table->foreign('user_id')
+                ->references('id')
+                ->on('users')
+                ->onUpdate('cascade')->onDelete('restrict');
             $table->foreignId('category_id');
+            $table->foreign('category_id')
+                ->references('id')
+                ->on('fundraising_categories')
+                ->onUpdate('cascade')->onDelete('restrict');
             $table->foreignId('province_id');
             $table->foreignId('regency_id');
-            $table->foreignId('district_id');
-            $table->foreignId('village_id');
+            $table->foreignId('district_id')->nullable();
+            $table->foreignId('village_id')->nullable();
             $table->timestamps();
         });
     }

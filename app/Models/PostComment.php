@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class PostComment extends Model
 {
@@ -20,9 +21,9 @@ class PostComment extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
-    public function user(): BelongsToMany
+    public function user(): BelongsTo
     {
-        return $this->belongsToMany(User::class);
+        return $this->belongsTo(User::class);
     }
 
     /**
@@ -30,8 +31,8 @@ class PostComment extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
-    public function post(): BelongsToMany
+    public function post(): BelongsTo
     {
-        return $this->belongsToMany(post::class);
+        return $this->belongsTo(post::class);
     }
 }

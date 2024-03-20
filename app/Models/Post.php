@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Post extends Model
 {
@@ -31,7 +32,7 @@ class Post extends Model
     {
         return $this->belongsTo(User::class, 'user_id', 'id');
     }
-    
+
     /**
      * Get all of the post comments for the Post
      *
@@ -39,7 +40,7 @@ class Post extends Model
      */
     public function postComments(): HasMany
     {
-        return $this->hasMany(Comment::class, 'post_id', 'id');
+        return $this->hasMany(PostComment::class, 'post_id', 'id');
     }
 
     /**

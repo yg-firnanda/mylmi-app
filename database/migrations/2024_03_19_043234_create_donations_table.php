@@ -17,7 +17,15 @@ return new class extends Migration
             $table->integer('nominal');
             $table->text('comment')->nullable();
             $table->foreignId('user_id');
+            $table->foreign('user_id')
+                ->references('id')
+                ->on('users')
+                ->onUpdate('cascade')->onDelete('restrict');
             $table->foreignId('fundraising_id');
+            $table->foreign('fundraising_id')
+                ->references('id')
+                ->on('fundraisings')
+                ->onUpdate('cascade')->onDelete('restrict');
             $table->timestamps();
         });
     }

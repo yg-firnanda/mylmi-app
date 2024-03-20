@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Model;
 
 class Donation extends Model
@@ -19,12 +18,22 @@ class Donation extends Model
     ];
 
     /**
-     * Get the user that owns the Donation
+     * The user that belong to the Donation
      *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
-    public function user(): BelongsTo
+    public function user(): BelongsToMany
     {
-        return $this->belongsTo(User::class, 'user_id', 'id');
+        return $this->belongsToMany(User::class);
+    }
+
+    /**
+     * The fundraising that belong to the Donation
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function fundraising(): BelongsToMany
+    {
+        return $this->belongsToMany(Fundraising::class);
     }
 }

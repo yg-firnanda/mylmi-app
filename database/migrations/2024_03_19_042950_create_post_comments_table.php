@@ -15,7 +15,15 @@ return new class extends Migration
             $table->id();
             $table->text('content');
             $table->foreignId('user_id');
+            $table->foreign('user_id')
+                ->references('id')
+                ->on('users')
+                ->onUpdate('cascade')->onDelete('restrict');
             $table->foreignId('post_id');
+            $table->foreign('post_id')
+                ->references('id')
+                ->on('posts')
+                ->onUpdate('cascade')->onDelete('restrict');
             $table->timestamps();
         });
     }

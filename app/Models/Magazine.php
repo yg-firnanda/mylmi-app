@@ -18,6 +18,7 @@ class Magazine extends Model
         'release',
         'views',
         'link',
+        'user_id'
     ];
 
     /**

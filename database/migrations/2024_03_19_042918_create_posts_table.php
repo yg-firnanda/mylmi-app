@@ -21,7 +21,15 @@ return new class extends Migration
             $table->integer('views');
             $table->enum('status', ['published', 'draft', 'archived']);
             $table->foreignId('category_id');
+            $table->foreign('category_id')
+                ->references('id')
+                ->on('post_categories')
+                ->onUpdate('cascade')->onDelete('restrict');
             $table->foreignId('user_id');
+            $table->foreign('user_id')
+                ->references('id')
+                ->on('users')
+                ->onUpdate('cascade')->onDelete('restrict');
             $table->timestamps();
         });
     }
