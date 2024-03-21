@@ -1,2 +1,2 @@
 ## Tabel ERD
-![LMI App (1)](https://github.com/yg-firnanda/mylmi-app/assets/82860149/527259a2-c7c2-47cd-b906-347392c9d1ad)
+![LMI App](https://github.com/yg-firnanda/mylmi-app/assets/82860149/58e69309-5aa0-4de6-90c6-e53e1f363216)
