@@ -20,12 +20,12 @@ return new class extends Migration
             $table->foreign('user_id')
                 ->references('id')
                 ->on('users')
-                ->onUpdate('cascade')->onDelete('restrict');
+                ->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('fundraising_id');
             $table->foreign('fundraising_id')
                 ->references('id')
                 ->on('fundraisings')
-                ->onUpdate('cascade')->onDelete('restrict');
+                ->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }
