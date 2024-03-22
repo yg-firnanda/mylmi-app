@@ -18,12 +18,12 @@ return new class extends Migration
             $table->foreign('user_id')
                 ->references('id')
                 ->on('users')
-                ->onUpdate('cascade')->onDelete('restrict');
+                ->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('post_id');
             $table->foreign('post_id')
                 ->references('id')
                 ->on('posts')
-                ->onUpdate('cascade')->onDelete('restrict');
+                ->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }

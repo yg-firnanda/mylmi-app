@@ -24,12 +24,12 @@ return new class extends Migration
             $table->foreign('category_id')
                 ->references('id')
                 ->on('post_categories')
-                ->onUpdate('cascade')->onDelete('restrict');
+                ->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('user_id');
             $table->foreign('user_id')
                 ->references('id')
                 ->on('users')
-                ->onUpdate('cascade')->onDelete('restrict');
+                ->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }
