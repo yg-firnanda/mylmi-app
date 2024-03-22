@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             FundraisingCategorySeeder::class,
             FundraisingSeeder::class,
+            MagazineSeeder::class,
         ]);
     }
 }
