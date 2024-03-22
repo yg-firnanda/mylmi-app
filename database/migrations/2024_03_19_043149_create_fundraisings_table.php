@@ -33,26 +33,26 @@ return new class extends Migration
                 ->on('fundraising_categories')
                 ->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('province_id');
-            $table->foreign('province_id')
-                ->references('id')
-                ->on('provinces')
-                ->onUpdate('cascade')->onDelete('cascade');
+            // $table->foreign('province_id')
+            //     ->references('id')
+            //     ->on('provinces')
+            //     ->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('regency_id');
             // $table->string('regency_id',4);
-            $table->foreign('regency_id')
-                ->references('id')
-                ->on('regencies')
-                ->onUpdate('cascade')->onDelete('cascade');
+            // $table->foreign('regency_id')
+            //     ->references('id')
+            //     ->on('regencies')
+            //     ->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('district_id')->nullable();
-            $table->foreign('district_id')
-                ->references('id')
-                ->on('districts')
-                ->onUpdate('cascade')->onDelete('cascade');
+            // $table->foreign('district_id')
+            //     ->references('id')
+            //     ->on('districts')
+            //     ->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('village_id')->nullable();
-            $table->foreign('village_id')
-                ->references('id')
-                ->on('villages')
-                ->onUpdate('cascade')->onDelete('cascade');
+            // $table->foreign('village_id')
+            //     ->references('id')
+            //     ->on('villages')
+            //     ->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }
