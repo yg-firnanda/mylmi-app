@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('slug');
             $table->text('body');
             $table->date('date');
-            $table->integer('views');
+            $table->integer('views')->default(0);
             $table->enum('status', ['published', 'draft', 'archived']);
             $table->foreignId('category_id');
             $table->foreign('category_id')

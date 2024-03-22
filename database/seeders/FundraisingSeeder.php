@@ -41,7 +41,7 @@ class FundraisingSeeder extends Seeder
                 "regency_id" => 1,
             ],
             [
-                "image" => "",
+                "image" => "https://rb.gy/sg1nn9",
                 "title" => "Bantuan Makanan untuk Korban Bencana Banjir",
                 "slug" => "bantuan-makanan-untuk-korban-bencana-banjir",
                 "collected_fund" => 1500000,

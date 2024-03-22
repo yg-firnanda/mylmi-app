@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('slug');
             $table->text('description');
             $table->date('release');
-            $table->integer('views');
+            $table->integer('views')->default(0);
             $table->text('link');
             $table->foreignId('user_id');
             $table->foreign('user_id')
