@@ -16,8 +16,8 @@ return new class extends Migration
             $table->text('image');
             $table->string('title');
             $table->string('slug');
-            $table->integer('collected_fund')->default(0);
-            $table->integer('target_fund');
+            $table->bigInteger('collected_fund')->default(0);
+            $table->bigInteger('target_fund');
             $table->text('description');
             $table->boolean('is_urgent')->default(0);
             $table->enum('status', ['open', 'closed'])->default('open');

@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('donations', function (Blueprint $table) {
             $table->id();
             $table->string('code');
-            $table->integer('nominal');
+            $table->bigInteger('nominal');
             $table->text('comment')->nullable();
             $table->foreignId('user_id');
             $table->foreign('user_id')

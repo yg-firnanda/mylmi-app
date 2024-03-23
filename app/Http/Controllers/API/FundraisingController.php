@@ -14,8 +14,9 @@ class FundraisingController extends Controller
         return response()->json($fundraisings);
     }
 
-    public function show()
+    public function show(Fundraising $fundraising)
     {
-        //
+        $result = Fundraising::where('slug', $fundraising->slug)->first();
+        return response()->json($result);
     }
 }
