@@ -25,6 +25,9 @@ class Fundraising extends Model
         'user_id',
         'category_id',
         'province_id',
+        'regency_id',
+        'district_id',
+        'village_id',
     ];
 
     /**
