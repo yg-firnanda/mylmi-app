@@ -18,34 +18,40 @@ class UserSeeder extends Seeder
                 "name" => "adminLMI1",
                 "email" => "adminlmi1@gmail.com",
                 "password" => "12345",
-                "is_admin" => 1,
+                "role" => 'superadmin',
+                "birth_date" => "2010-01-01"
             ],
             [
                 "name" => "adminLMI2",
                 "email" => "adminlmi2@gmail.com",
                 "password" => "12345",
-                "is_admin" => 1,
+                "role" => 'admin',
+                "birth_date" => "2010-01-01"
             ],
             [
                 "name" => "adminLMI3",
                 "email" => "adminlmi3@gmail.com",
                 "password" => "12345",
-                "is_admin" => 1,
+                "role" => 'admin',
+                "birth_date" => "2010-01-01"
             ],
             [
                 "name" => "userLMI1",
                 "email" => "userlmi1@gmail.com",
                 "password" => "12345",
+                "birth_date" => "2010-01-01"
             ],
             [
                 "name" => "userLMI2",
                 "email" => "userlmi2@gmail.com",
                 "password" => "12345",
+                "birth_date" => "2010-01-01"
             ],
             [
                 "name" => "userLMI3",
                 "email" => "userlmi3@gmail.com",
                 "password" => "12345",
+                "birth_date" => "2010-01-01"
             ],
         ];
 
