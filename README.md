@@ -1,7 +1,7 @@
 ## Tabel ERD
 
 # Update Skema Database User & Fundraising
-![LMI App (1)](https://github.com/yg-firnanda/mylmi-app/assets/82860149/c6e24979-cb00-4503-911f-861aa468b916)
+![LMI App (2)](https://github.com/yg-firnanda/mylmi-app/assets/82860149/1c5560ee-d256-414c-85bb-70bfaabe3ca8)
 
 ## User:
 Perubahan field is_admin menjadi role tipe enum, dengan value berikut:
