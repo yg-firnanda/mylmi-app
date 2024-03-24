@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\API\auth;
+namespace App\Http\Controllers\API\Auth;
 
-use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class RegisterController extends Controller
 {
@@ -13,15 +14,9 @@ class RegisterController extends Controller
             "name" => "required",
             "email" => "required|unique:users,email",
             "password" => "required",
+            "confirm_password" => "required|same:password",
             "birth_date" => "required",
         ]);
-
-        if ($validatedData['password'] !== $request->input('confirmation_password')) {
-            return response()->json([
-                "success" => false,
-                "message" => "Password and confirmation password do not match."
-            ], 400);
-        }
 
         User::create($validatedData);
 
@@ -31,7 +26,7 @@ class RegisterController extends Controller
             "data" => [
                 "name" => $validatedData['name'],
                 "email" => $validatedData['email'],
-                "birth_date" => $validatedData['required'],
+                "birth_date" => $validatedData['birth_date'],
             ],
         ], 201);
     }

@@ -1,46 +1,62 @@
 <?php
 
-namespace App\Http\Controllers\API\auth;
+namespace App\Http\Controllers\API\Auth;
 
-use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class LoginController extends Controller
 {
     public function authenticate(Request $request)
     {
         $credentials = $request->validate([
-            'email' => ['required', 'email'],
-            'password' => ['required'],
+            'email' => 'required|email',
+            'password' => 'required',
         ]);
 
         if (Auth::attempt($credentials)) {
-            $request->session()->regenerate();
-            // $token = Auth::user()->createToken('authToken')->plainTextToken;
+            $user = Auth::user();
+            $token = $user->createToken($user->email . "'s authToken")->plainTextToken;
 
             return response()->json([
                 "success" => true,
                 "message" => "Successful Login",
-                // "token" => $token,
-            ]);
+                "data" => [
+                    "name" => $user->name,
+                    "email" => $user->email,
+                    "token" => $token,
+                ],
+            ], 200);
         }
 
         return response()->json([
             "success" => false,
             "message" => "Failed login. Invalid email / password",
-        ]);
+        ], 400);
     }
 
     public function logout(Request $request)
     {
-        Auth::logout();
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();
-
-        return response()->json([
-            "success" => true,
-            "message" => "Successful logout",
-        ]);
+        if (Auth::check()) {
+            echo "Hello";
+        } else {
+            echo "What???";
+        }
+        // if ($request->user()) {
+        //     $request->user()->currentAccessToken()->delete();
+            
+        //     return response()->json([
+        //         "success" => true,
+        //         "message" => "Successful logout",
+        //     ]);
+        // }
+    
+        // return response()->json([
+        //     "success" => false,
+        //     "message" => "Unauthorized logout",
+        // ], 401);
     }
 }
