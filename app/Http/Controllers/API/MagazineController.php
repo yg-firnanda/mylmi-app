@@ -14,8 +14,10 @@ class MagazineController extends Controller
         return response()->json($magazines);
     }
 
-    public function show()
+    
+    public function show(Magazine $magazines)
     {
-        //
+        $result = Magazine::where('slug', $magazines->slug)->first();
+        return response()->json($result);
     }
 }
