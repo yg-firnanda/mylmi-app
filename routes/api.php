@@ -14,11 +14,13 @@ use App\Http\Controllers\API\FundraisingController;
 Route::post('/register', [AuthController::class, 'store'])->name('auth.register');
 Route::post('/login', [AuthController::class, 'authenticate'])->name('auth.login');
 
+Route::get('/fundraisings', [FundraisingController::class, 'index'])->name('api.fundraising.index');
+Route::get('/fundraisings/{fundraising:slug}', [FundraisingController::class, 'show'])->name('api.fundraising.show');
+
+Route::get('/magazines', [MagazineController::class, 'index'])->name('api.magazine.index');
+Route::get('/magazines/{magazines:slug}', [MagazineController::class, 'show'])->name('api.magazine.show');
+
 Route::middleware('auth:sanctum')->group(function() {
-    Route::get('/fundraisings', [FundraisingController::class, 'index'])->name('fundraising.index');
-    Route::get('/fundraisings/{fundraising:slug}', [FundraisingController::class, 'show'])->name('fundraising.show');
-    Route::get('/magazines', [MagazineController::class, 'index'])->name('magazine.index');
-    Route::get('/magazines/:slug', [MagazineController::class, 'index'])->name('magazine.show');
 
     Route::post('/logout', [AuthController::class, 'logout'])->name('auth.logout');
 });
