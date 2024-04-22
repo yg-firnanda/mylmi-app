@@ -45,7 +45,7 @@ class Fundraising extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function Category(): BelongsTo
+    public function category(): BelongsTo
     {
         return $this->belongsTo(FundraisingCategory::class, 'category_id', 'id');
     }
