@@ -2,51 +2,50 @@
 
 namespace App\Http\Controllers\API;
 
-use App\Models\Magazine;
+use App\Models\Post;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class MagazineController extends Controller
+class PostController extends Controller
 {
     public function index()
     {
         try {
-            $magazines = Magazine::latest()->get();
+            $posts = Post::latest()->get();
             return response()->json([
                 "success" => true,
-                "message" => "Get Magazines Successful",
-                "magazines" => $magazines,
+                "message" => "Get Posts Successful",
+                "posts" => $posts,
             ]);
         } catch (Exception $e) {
             return response()->json([
                 "success" => false,
-                "message" => "An error occured: " . $e->getMessage(),
+                "message" => "An error occurred: " . $e->getMessage(),
             ], 500);
         }
     }
 
-
-    public function show(Magazine $magazines)
+    public function show(Post $post)
     {
         try {
-            $magazine = Magazine::where('slug', $magazines->slug)->first();
+            $post = Post::where('slug', $post->slug)->first();
 
-            if (!$magazine) {
+            if (!$post) {
                 return response()->json([
                     "success" => false,
-                    "message" => "Magazine Not Found",
-                ]);
+                    "message" => "Post Not Found",
+                ], 404);
             }
 
             return response()->json([
                 "success" => true,
-                "message" => "Get Magazine Successful",
-                "magazine" => $magazine
+                "message" => "Get Post Successful",
+                "post" => $post
             ]);
         } catch (Exception $e) {
             return response()->json([
                 "success" => false,
-                "message" => "An error occured: " . $e->getMessage(),
+                "message" => "An error occurred: " . $e->getMessage(),
             ], 500);
         }
     }

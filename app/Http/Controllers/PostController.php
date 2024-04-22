@@ -13,7 +13,10 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+        $categories = Post::all();
+        return view('posts', [
+            "categories" => $categories,
+        ]);
     }
 
     /**
@@ -37,7 +40,7 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        //
+        return view('post');
     }
 
     /**

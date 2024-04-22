@@ -2,20 +2,20 @@
 
 namespace App\Http\Controllers\API;
 
-use App\Models\Magazine;
+use App\Models\Banner;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class MagazineController extends Controller
+class BannerController extends Controller
 {
     public function index()
     {
         try {
-            $magazines = Magazine::latest()->get();
+            $banners = Banner::latest->get();
             return response()->json([
                 "success" => true,
-                "message" => "Get Magazines Successful",
-                "magazines" => $magazines,
+                "message" => "Get Banners Successful",
+                "banners" => $banners,
             ]);
         } catch (Exception $e) {
             return response()->json([
@@ -25,23 +25,22 @@ class MagazineController extends Controller
         }
     }
 
-
-    public function show(Magazine $magazines)
+    public function show($id)
     {
         try {
-            $magazine = Magazine::where('slug', $magazines->slug)->first();
+            $banner = Banner::findById($id)->first();
 
-            if (!$magazine) {
+            if (!$banner) {
                 return response()->json([
                     "success" => false,
-                    "message" => "Magazine Not Found",
-                ]);
+                    "message" => "Banner Not Found"
+                ], 404);
             }
 
             return response()->json([
                 "success" => true,
-                "message" => "Get Magazine Successful",
-                "magazine" => $magazine
+                "message" => "Get Banner Successful",
+                "banner" => $banner,
             ]);
         } catch (Exception $e) {
             return response()->json([
